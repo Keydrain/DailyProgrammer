@@ -1,28 +1,50 @@
+/*
+	Solution for Easy Challenge #1
+	Author: Keydrain
+	Date:   03/24/15
+
+	Includes 'Extra Credit' file management
+	Once the out.log file has been created, it must be deleted to be changed. 
+*/
+
+
 #include <stdio.h> 
-//#include <string.h>
 
 int main(void){
 
-	char name[64];
-	int length = 0;
-	int age = 0;
-	char username[64];
+	FILE *input, *output;
+	char logfile[] = "out.log";
+	int c;
 
-	printf("Please enter your name: ");
-//	scanf"%s", name);
-//	fgets(name, 64, stdin);
-//	length = strlen(name) - 1;
-//	name[length] = '\0';
-	scanf ("%[^\n]%*c", name);
-	printf("Please enter your age: ");
-	scanf("%d", &age);
-	printf("Please enter your reddit username: ");
-//	fgets(username, 64, stdin);
-//	length = strlen(username) - 1;
-//	username[length] = '\0';
-//	scanf ("%d"); /* If this line is deleted, the program doesn't wait for input. */
-	rewind(stdin); /* Ignore the above, it seems this gem puts the reader back at the beginning of stdin. */
-	scanf ("%[^\n]%*c", username);
-	printf("\nYour name is %s, you are %d years old, and your username is %s\n", name, age, username);
-	return(0);
+	input = fopen(logfile, "r");
+	if (input == NULL){
+
+		char name[64];
+		int length = 0;
+		int age = 0;
+		char username[64];
+	
+		printf("Please enter your name: ");
+		scanf ("%[^\n]%*c", name); /* Regex in scanf for C */
+		printf("Please enter your age: ");
+		scanf("%d", &age);
+		printf("Please enter your reddit username: ");
+		rewind(stdin); /* This gem puts the reader back at the beginning of stdin. */
+		scanf ("%[^\n]%*c", username); /* Regex in scanf for C */
+		printf("Your name is %s, you are %d years old, and your username is %s\n", name, age, username);
+		
+		output = fopen(logfile, "w");
+		fprintf(output, "Your name is %s, you are %d years old, and your username is %s\n", name, age, username);
+		fclose(output);
+		return(0);
+
+	} else {
+
+		while ((c = getc(input)) != EOF) {
+			putchar(c);
+		}
+		fclose(input);
+		return(0);
+
+	}
 }
