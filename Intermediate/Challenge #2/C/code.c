@@ -13,7 +13,7 @@ Date:   03/26/15
 struct cell{
 	char name[32];
 	char description[180];
-	int action;
+	 int action;
 	char attempt[180];
 	char result[180];
 };
@@ -29,7 +29,11 @@ int main(void){
 		//printf("%d\n",rooms[i]);
 	}
 
-	struct cell *room1, *room2, *room3, *room4, *room5;
+	struct cell *room1;
+	struct cell *room2;
+	struct cell *room3;
+	struct cell *room4;
+	struct cell *room5;
 
 	room1 = malloc(sizeof(struct cell));
 	strcpy(room1->name, "room1");
@@ -83,13 +87,14 @@ int main(void){
 	while (current != 0) {
 		//printf("--> Debugging: %p\n", current);
 		char printing[180];
+		//printf("%p\n", current->data);
 		strcpy(printing, current->data->description);
 		//printf("%p\n", printing);
 		printf("%s\n", printing);
 		printf("\n\tWhat do you do?\n\t[1: Go Left\t2: Go Right\t3: Action\t4: Quit\t] => ");
 		scanf("%d", &choice);
 		if (choice == 4){
-			printf("\n\tReally?\n\t[1: Change your mind\t 2: Quit\t] => ");
+			printf("\n\tReally?\n\t[1: Change your mind\t2: Quit\t] => ");
 			scanf("%d", &choice);
 			printf("\n");
 			if (choice == 2){
@@ -101,13 +106,13 @@ int main(void){
 		} else if (choice == 2){
 			current = current->right;
 		} else if (choice == 3){
-			printf("\n\tDude. Didn't you get the memo?\n\tThis is like pre-alpha or something.\n\tQuit pressing buttons that neither of us know what they do.\n");
+			printf("\n\tDude.\n\tDidn't you get the memo?\n\tThis is like pre-alpha or something.\n\tQuit pressing buttons that neither of us know what they do.\n");
 		} else {
-			printf("\n\t*Developer facepalms*\n\t Ok.\n\tLets try reading the menu next time.\n\tThe one that's just to the left.\n\tGot it?\n\tAlright everyone, lets try this again!\n");
+			printf("\n\t*Developer face-palms*\n\tOk.\n\tLets try reading the menu next time.\n\tThe one that's just to the left.\n\tGot it?\n\tAlright everyone, lets try this again!\n");
 		}
 	}
 
-	printf("\n\tYou stayed sane and found an exit.\n\tYou may now return to you drab life at your cubicle.\n\tDon't look now, I think your boss is coming up behind you!\n\tOr is that your wife? Regardless, I was never here.");
+	printf("\n\tYou stayed sane and found an exit.\n\tYou may now return to you drab life at your cubicle.\n\tDon't look now, I think your boss is coming up behind you!\n\tOr is that your wife?\n\tRegardless, I was never here.");
 
 	//printf("--> Debugging: %p\n", current);
 
