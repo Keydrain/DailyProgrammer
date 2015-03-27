@@ -1,3 +1,11 @@
+/*
+Binary Tree header for C
+Author: Keydrain
+Date:   03/26/15
+
+Nodes contain an id, description, left and right children.
+*/
+
 #ifndef HEAD
 #define HEAD
 
@@ -16,9 +24,9 @@ void insert(int id, struct node **leaf, char *description){
 		(*leaf)->right = 0;
 		strcpy((*leaf)->description, description);
 	} else if (id < (*leaf)->id){
-		insert(id, &(*leaf)->left, (*leaf)->description);
+		insert(id, &(*leaf)->left, description);
 	} else if (id > (*leaf)->id){
-		insert(id, &(*leaf)->right, (*leaf)->description);
+		insert(id, &(*leaf)->right, description);
 	}
 };
 
