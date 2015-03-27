@@ -11,22 +11,24 @@ Nodes contain an id, description, left and right children.
 
 struct node{
 	int id;
-	char description[180];
+	//char description[180]; // Note: rather than this, have a pointer that points to a node of a linked list of heterogeneous types. 
+	struct cell *data;
 	struct node *left;
 	struct node *right;
 };
 
-void insert(int id, struct node **leaf, char *description){
+void insert(int id, struct node **leaf, struct cell *data){
 	if (*leaf == 0){
 		*leaf = (struct node*) malloc(sizeof(struct node));
 		(*leaf)->id = id;
 		(*leaf)->left = 0;
 		(*leaf)->right = 0;
-		strcpy((*leaf)->description, description);
+		(*leaf)->data = 0;
+		//strcpy((*leaf)->description, description);
 	} else if (id < (*leaf)->id){
-		insert(id, &(*leaf)->left, description);
+		insert(id, &(*leaf)->left, (*leaf)->data);
 	} else if (id > (*leaf)->id){
-		insert(id, &(*leaf)->right, description);
+		insert(id, &(*leaf)->right, (*leaf)->data);
 	}
 };
 
@@ -46,8 +48,12 @@ struct node *search(int id, struct node *leaf){
 	}
 };
 
-char *read(struct node *leaf){
+/* char *read(struct node *leaf){
 	return leaf->description;
+} */
+
+struct cell *read(struct node *leaf){
+	return leaf->data;
 }
 
 void destroy(struct node *leaf){
