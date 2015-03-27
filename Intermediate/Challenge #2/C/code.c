@@ -29,6 +29,11 @@ int main(void){
 		//printf("%d\n",rooms[i]);
 	}
 
+	rooms[1] = 25;
+	rooms[2] = 75;
+	rooms[3] = 0;
+	rooms[4] = 40;
+
 	struct cell *room1;
 	struct cell *room2;
 	struct cell *room3;
@@ -40,21 +45,21 @@ int main(void){
 	strcpy(room1->description, "\n\tYou find yourself at an old castle with two doors.\n\tThe gate reads:\n\tTHOSE WHO ENTER, BEWARE. THOSE WHO DON'T ENTER...\n\t(Move along would ya?)\0");
 	room1->action = 0;
 	strcpy(room1->attempt, "\n\tLets not get carried away here, it's just the beginning of the quest.");
-	strcpy(room1->result, "");
+	strcpy(room1->result, "\n\t");
 
 	room2 = malloc(sizeof(struct cell));
 	strcpy(room2->name, "room2");
 	strcpy(room2->description, "\n\tYou find a dragon sleeping in the center of the room.\n\tHe faces a door on his right and another door is located by his tail.");
 	room2->action = 1;
-	strcpy(room2->attempt, "The dragon wakes up and discovers his next meal has appeared.");
-	strcpy(room2->result, "You slew the dragon.\n\tWoot.\n\tCarry on.");
+	strcpy(room2->attempt, "\n\tThe dragon wakes up and discovers his next meal has appeared.");
+	strcpy(room2->result, "\n\tYou slew the dragon.\n\tWoot.");
 
 	room3 = malloc(sizeof(struct cell));
 	strcpy(room3->name, "room3");
 	strcpy(room3->description, "\n\tYou stumble into an empty and silent room with two doors at the opposite side.");
 	room3->action = 0;
-	strcpy(room3->attempt, "You frantically swing your sword at the air. Nothing happens.");
-	strcpy(room3->result, "");
+	strcpy(room3->attempt, "\n\tYou frantically swing your sword at the air. Nothing happens.");
+	strcpy(room3->result, "\n\t");
 
 	room4 = malloc(sizeof(struct cell));
 	strcpy(room4->name, "room4");
@@ -85,7 +90,7 @@ int main(void){
 	int choice;
 
 	while (current != 0) {
-		//printf("--> Debugging: %p\n", current);
+		//printf("\n--> Debugging: %p\n", current);
 		char printing[180];
 		//printf("%p\n", current->data);
 		strcpy(printing, current->data->description);
@@ -98,15 +103,45 @@ int main(void){
 			scanf("%d", &choice);
 			printf("\n");
 			if (choice == 2){
-				printf("\tFine.\n\tYou killed yourself.\n\tHappy?\n\n");
+				printf("\n\tFine.\n\tYou killed yourself.\n\tHappy?\n\n");
 				return(0);
 			}
 		} else if (choice == 1){
-			current = current->left;
+
+			if (current->data->action == 1){
+				strcpy(printing, current->data->attempt);
+				printf("%s\n", printing);
+				printf("\n\tLooks like you died. Bummer...\n\tWanna try again?\n\n");
+				return(0);
+			} else {
+				current = current->left;
+			}
+
 		} else if (choice == 2){
+
+			if (current->data->action == 1){
+				strcpy(printing, current->data->attempt);
+				printf("%s\n", printing);
+				printf("\n\tLooks like you died. Bummer...\n\tWanna try again?\n\n");
+				return(0);
+			} else {
+				current = current->right;
+			}
+
 			current = current->right;
 		} else if (choice == 3){
-			printf("\n\tDude.\n\tDidn't you get the memo?\n\tThis is like pre-alpha or something.\n\tQuit pressing buttons that neither of us know what they do.\n");
+
+			if (current->data->action == 1){
+				strcpy(printing, current->data->result);
+				printf("%s\n", printing);
+				current->data->action = 0;
+				strcpy(current->data->description, "");
+			} else {
+				printf("\n\tWe're done here, lets get moving!\n");
+				strcpy(current->data->description, "");
+			}
+
+			//printf("\n\tDude.\n\tDidn't you get the memo?\n\tThis is like pre-alpha or something.\n\tQuit pressing buttons that neither of us know what they do.\n");
 		} else {
 			printf("\n\t*Developer face-palms*\n\tOk.\n\tLets try reading the menu next time.\n\tThe one that's just to the left.\n\tGot it?\n\tAlright everyone, lets try this again!\n");
 		}
@@ -114,7 +149,7 @@ int main(void){
 
 	printf("\n\tYou stayed sane and found an exit.\n\tYou may now return to you drab life at your cubicle.\n\tDon't look now, I think your boss is coming up behind you!\n\tOr is that your wife?\n\tRegardless, I was never here.");
 
-	//printf("--> Debugging: %p\n", current);
+	//printf("\n\n--> Debugging: %p\n", current);
 
 	printf("\n\n");
 	return(0);
