@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 =for comment
-Solution for Easy Challenge #2
+Solution for Easy Challenge #002
 Author: Keydrain
 Date: 03/25/15
 

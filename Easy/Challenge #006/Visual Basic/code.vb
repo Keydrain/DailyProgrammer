@@ -1,4 +1,4 @@
-'Solution for Easy Challenge #6
+'Solution for Easy Challenge #006
 'Author: Keydrain
 'Date: 04/02/15
 

@@ -1,4 +1,4 @@
-'Solution for Easy Challenge #5
+'Solution for Easy Challenge #005
 'Author: Keydrain
 'Date: 04/01/15
 '

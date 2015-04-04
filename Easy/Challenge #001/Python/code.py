@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-Solution for Easy Challenge #1
+Solution for Easy Challenge #001
 Author: Keydrain
 Date:   03/25/15
 

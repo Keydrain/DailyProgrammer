@@ -1,5 +1,5 @@
 /*
-	Solution for Easy Challenge #1
+	Solution for Easy Challenge #001
 	Author: Keydrain
 	Date:   03/24/15
 

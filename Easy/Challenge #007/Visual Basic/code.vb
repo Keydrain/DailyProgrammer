@@ -1,4 +1,4 @@
-'Solution to Easy Challenge #7
+'Solution to Easy Challenge #007
 'Author: Keydrain
 'Date: 04/02/15
 

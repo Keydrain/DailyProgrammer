@@ -1,4 +1,4 @@
-Easy Challenge #7 by bholzer
+Easy Challenge #007 by bholzer
 Write a program that can translate Morse code in the format of ...---...
 A space and a slash will be placed between words. ..- / --.-
 For bonus, add the capability of going from a string to Morse code.

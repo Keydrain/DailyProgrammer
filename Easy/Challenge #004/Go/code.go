@@ -1,7 +1,7 @@
 package main
 
 /*
-Solution for Easy Challenge #4
+Solution for Easy Challenge #004
 Author: Keydrain
 Date: 03/30/15
 

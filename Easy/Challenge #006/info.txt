@@ -1,3 +1,3 @@
-Easy Challenge #6 by nottoobadguy
+Easy Challenge #006 by nottoobadguy
 You're challenge for today is to create a program that can calculate pi accurately to at least 30 decimal places.
 Try not to cheat :)
