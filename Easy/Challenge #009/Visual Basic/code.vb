@@ -17,7 +17,7 @@ Class code
 		text = Console.ReadLine()
 		input = text.Split()
 
-		Array.Sort(input)
+		Array.Sort(input) 'This feel like cheating'
 
 		Console.Write("Sorted:")
 

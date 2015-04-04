@@ -6,17 +6,17 @@ General organization of the files.
 
 DailyProgrammer
   * Easy
-    * Challenge #1
+    * Challenge #001
       * Info.txt
-      * Languages
+      * Language
         * Code...
   * Intermediate
-    * Challenge #1
+    * Challenge #001
       * Info.txt
-      * Languages
+      * Language
         * Code...
   * Hard
-    * Challenge #1
+    * Challenge #001
       * Info.txt
-      * Languages
+      * Language
         * Code...
